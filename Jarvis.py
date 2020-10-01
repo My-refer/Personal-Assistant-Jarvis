@@ -58,6 +58,7 @@ def sendEmail(to, content):
     server.login('youremail@gmail.com', 'your-password')
     server.sendmail('youremail@gmail.com', to, content)
     server.close()
+    
 
 if __name__ == "__main__":
     wishMe()
@@ -85,9 +86,18 @@ if __name__ == "__main__":
             webbrowser.open("google.com")
 
         elif 'open website' in query:
-            webbrowser.open("website.com")   
-
-
+            webbrowser.open("website.com")
+            
+        elif 'search google' in query:
+            try:
+                speak("What should I search")
+                print("What should I search?")
+                searchQuery = takeCommand()
+                webbrowser.open("www.google.com/search?q=" + searchQuery)
+                
+            except Exception as e:
+                print("Unable to search")
+           
         elif 'play music' in query:
             music_dir = 'path_of_your_song'
             songs = os.listdir(music_dir)
